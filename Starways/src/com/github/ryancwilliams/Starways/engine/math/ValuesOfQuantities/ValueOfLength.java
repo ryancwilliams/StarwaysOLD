@@ -92,4 +92,13 @@ public class ValueOfLength implements ValueOfQuantity {
     public String asString() {
         return this.asString(2);
     }
+
+    /**
+     * the toString.
+     * @return this object as a string.
+     */
+    @Override
+    public String toString() {
+        return "ValueOfLength{" + "value=" + value + ", quantity=" + quantity + '}';
+    }
 }

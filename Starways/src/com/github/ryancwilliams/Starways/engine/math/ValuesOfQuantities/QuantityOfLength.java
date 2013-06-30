@@ -84,4 +84,13 @@ public enum QuantityOfLength implements Quantity {
             QuantityOfLength destination) {
         return (destination.ConversionFactor / source.ConversionFactor);
     }
+
+    /**
+     * The toString.
+     * @return this object as a string.
+     */
+    @Override
+    public String toString() {
+        return "QuantityOfLength{" + "Name=" + Name + ", Symbol=" + Symbol + ", ConversionFactor=" + ConversionFactor + '}';
+    }
 }
