@@ -9,10 +9,10 @@ package com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities;
  * @author ryancwilliams
  */
 public enum QuantityOfLength implements Quantity {
-    METRE("metre","m",0.000001),
-    KILOMETRE("kilometre","km",0.001000),
-    ASTRONOMICAL_UNIT("astronomical unit","au",149597.870700),
-    LIGHT_YEAR("light-year","ly",9460730472.580800);
+    METRE("metre","m",1d),
+    KILOMETRE("kilometre","km",1000d),
+    ASTRONOMICAL_UNIT("astronomical unit","au",149597870700d),
+    LIGHT_YEAR("light-year","ly",9460730472580800d);
     
     /**
      * The name of the unit.
