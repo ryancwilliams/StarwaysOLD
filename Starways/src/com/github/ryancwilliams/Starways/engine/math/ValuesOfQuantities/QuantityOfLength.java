@@ -15,6 +15,11 @@ public enum QuantityOfLength implements Quantity {
     LIGHT_YEAR("light-year","ly",9460730472580800d);
     
     /**
+     * The base unit for these lengths.
+     */
+    public static final QuantityOfLength BASE_UNIT = METRE;
+    
+    /**
      * The name of the unit.
      */
     private final String Name;
