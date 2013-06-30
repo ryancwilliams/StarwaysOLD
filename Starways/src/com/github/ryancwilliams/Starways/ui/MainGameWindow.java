@@ -28,11 +28,21 @@ public class MainGameWindow extends javax.swing.JFrame {
 
         Menu = new javax.swing.JMenuBar();
         FileMenu = new javax.swing.JMenu();
+        EmpireMenu = new javax.swing.JMenu();
+        SystemMapMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         FileMenu.setText("File");
         Menu.add(FileMenu);
+
+        EmpireMenu.setText("Empire");
+
+        SystemMapMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        SystemMapMenuItem.setText("System Map");
+        EmpireMenu.add(SystemMapMenuItem);
+
+        Menu.add(EmpireMenu);
 
         setJMenuBar(Menu);
 
@@ -85,7 +95,9 @@ public class MainGameWindow extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu EmpireMenu;
     private javax.swing.JMenu FileMenu;
     private javax.swing.JMenuBar Menu;
+    private javax.swing.JMenuItem SystemMapMenuItem;
     // End of variables declaration//GEN-END:variables
 }
