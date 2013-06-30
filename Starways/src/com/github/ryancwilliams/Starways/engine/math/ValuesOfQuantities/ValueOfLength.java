@@ -8,7 +8,7 @@ package com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities;
  * Used to link numerical values of length to Quantities of Length
  * @author ryancwilliams
  */
-public class ValueOfLength {
+public class ValueOfLength implements ValueOfQuantity {
     
     /**
      * the value in the specified quantity.
@@ -69,5 +69,25 @@ public class ValueOfLength {
     public double getConvertedQuantity(QuantityOfLength quantity) {
         return this.value * QuantityOfLength
                 .caculateConversionFactor(this.quantity, quantity);
+    }
+
+    /**
+     * Gets this ValueOfLength as a formated string.
+     * @param precision the number decimals to create the value to.
+     * @return the ValueOfQuantity as a formated string.
+     */
+    @Override
+    public String asString(int precision) {
+        //Call the formator to format this value.
+        return ValueOfQuantityFormatter.formatValueOfQuantity(this, precision);
+    }
+
+    /**
+     * Gets this ValueOfLength as a formated string using default precision.
+     * @return the ValueOfQuantity as a formated string.
+     */
+    @Override
+    public String asString() {
+        return this.asString(2);
     }
 }
