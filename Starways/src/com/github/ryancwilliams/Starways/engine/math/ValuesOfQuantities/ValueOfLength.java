@@ -33,6 +33,7 @@ public class ValueOfLength implements ValueOfQuantity {
      * Gets the value in the specified quantity.
      * @return the value in the specified quantity.
      */
+    @Override
     public double getValue() {
         return value;
     }
@@ -49,6 +50,7 @@ public class ValueOfLength implements ValueOfQuantity {
      * Gets the quantity the value is specified in.
      * @return the quantity the value is specified in.
      */
+    @Override
     public QuantityOfLength getQuantity() {
         return quantity;
     }
