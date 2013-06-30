@@ -68,9 +68,18 @@ public class ValueOfLength implements ValueOfQuantity {
      * @param quantity the quantity to return the value in.
      * @return the value in the specified quantity.
      */
-    public double getConvertedQuantity(QuantityOfLength quantity) {
+    public double getConvertedValue(QuantityOfLength quantity) {
         return this.value * QuantityOfLength
                 .caculateConversionFactor(this.quantity, quantity);
+    }
+    
+    /**
+     * Gets a ValueOfLength in the specified quantity.
+     * @param quantity the quantity the value should be in
+     * @return the ValueOfLength in the specified quantity.
+     */
+    public ValueOfLength getConvertedValueOfLength(QuantityOfLength quantity) {
+        return new ValueOfLength(this.getConvertedValue(quantity), quantity);
     }
 
     /**
