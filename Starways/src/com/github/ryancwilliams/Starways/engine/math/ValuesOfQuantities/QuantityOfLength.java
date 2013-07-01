@@ -82,7 +82,7 @@ public enum QuantityOfLength implements Quantity {
      */
     public static double caculateConversionFactor(QuantityOfLength source, 
             QuantityOfLength destination) {
-        return (destination.ConversionFactor / source.ConversionFactor);
+        return (source.ConversionFactor / destination.ConversionFactor);
     }
 
     /**

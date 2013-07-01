@@ -21,7 +21,7 @@ public class ValueOfQuantityFormatter {
      */
     private static DecimalFormat getFormat(int decimalPlaces) {
         //Create a digit and a decimal point with leading digits and thousands separator 
-        String pattern = "###,###,###,##0.";
+        String pattern = "###,##0.";
         
         //For <decimalPlaces> of times
         for(int i = 0;i < decimalPlaces;i++) {

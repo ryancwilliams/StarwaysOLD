@@ -23,7 +23,7 @@ public class TestMain {
         System.out.println(test.getConvertedValueOfLength(QuantityOfLength.KILOMETRE).asString());
         System.out.println(test.getConvertedValueOfLength(QuantityOfLength.ASTRONOMICAL_UNIT).asString());
         System.out.println(test.getConvertedValueOfLength(QuantityOfLength.LIGHT_YEAR).asString());
-        test = new ValueOfLength(0.1, QuantityOfLength.ASTRONOMICAL_UNIT);
+        test = new ValueOfLength(1, QuantityOfLength.METRE);
         System.out.println(test);
         System.out.println(test.asString());
         System.out.println(test.getConvertedValueOfLength(QuantityOfLength.METRE).asString());
