@@ -5,7 +5,7 @@
 package com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities;
 
 /**
- *
+ * This enum provides quantities of mass for working with masses. 
  * @author ryancwilliams
  */
 public enum QuantityOfMass implements Quantity {
