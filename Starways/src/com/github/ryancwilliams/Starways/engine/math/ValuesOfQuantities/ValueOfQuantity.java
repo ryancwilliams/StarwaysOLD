@@ -5,7 +5,7 @@
 package com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities;
 
 /**
- * An interface for reading values inside of a ValueOfQuantity object.
+ * An class providing common methods for working with a ValueOfQuantity object.
  *
  * @author ryancwilliams
  */
