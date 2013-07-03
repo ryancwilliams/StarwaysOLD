@@ -12,7 +12,13 @@ public enum QuantityOfLength implements Quantity {
     METRE("metre","m",1d),
     KILOMETRE("kilometre","km",1000d),
     ASTRONOMICAL_UNIT("astronomical unit","au",149597870700d),
-    LIGHT_YEAR("light-year","ly",9460730472580800d);
+    LIGHT_YEAR("light-year","ly",9460730472580800d),
+    /**
+     * Solar radius is a unit of distance used to express the size of
+     * stars in astronomy equal to the current radius of the Sun: 
+     * 1 R☉ = 6.955*10^8
+     */
+    SOLAR_RADIUS("Solar radius","R☉",695500000d);
     
     /**
      * The base unit for these lengths.
