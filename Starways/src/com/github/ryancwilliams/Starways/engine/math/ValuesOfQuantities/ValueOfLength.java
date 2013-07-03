@@ -81,6 +81,15 @@ public class ValueOfLength implements ValueOfQuantity {
     public ValueOfLength getConvertedValueOfLength(QuantityOfLength quantity) {
         return new ValueOfLength(this.getConvertedValue(quantity), quantity);
     }
+    
+    /**
+     * Converts this ValueOfLength to the specified quantity.
+     * @param quantity the quantity this value should be in.
+     */
+    public void convertTo(QuantityOfLength quantity) {
+        this.value = this.getConvertedValue(quantity);
+        this.quantity = quantity;
+    }
 
     /**
      * Gets this ValueOfLength as a formated string.
