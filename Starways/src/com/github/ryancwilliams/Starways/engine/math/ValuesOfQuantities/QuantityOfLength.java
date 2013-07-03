@@ -20,7 +20,7 @@ public enum QuantityOfLength implements Quantity {
      * knowledge of metrology. Since 1983, it has been defined as "the 
      * length of the path travelled by light in vacuum during a time 
      * interval of 1/299,792,458 of a second."
-     * <p> 1m is the base unit of this Quantity
+     * <p> 1 m is the base unit of this Quantity
      */
     METRE("metre","m",1d),
     /**
@@ -58,7 +58,15 @@ public enum QuantityOfLength implements Quantity {
      * stars in astronomy equal to the current radius of the Sun: 
      * <p> 1 R☉ = 6.955*10^8 m
      */
-    SOLAR_RADIUS("Solar radius","R☉",695500000d);
+    SOLAR_RADIUS("solar radius","R☉",695500000d),
+    /**
+     * Earth radius is the distance from Earth's center to its surface,
+     * about 6,371 kilometers (3,959 mi). This length is also used as a 
+     * unit of distance, especially in astronomy and geology, where it 
+     * is usually denoted by R⊕.
+     * <p> 1 R⊕ = 6371000 m
+     */
+    EARTH_RADIUS("earth radius","R⊕",6371000d);
     
     /**
      * The base unit for these lengths.
