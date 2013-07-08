@@ -1,17 +1,20 @@
-/'
-----------------------------------------READ THIS----------------------------------------
-
-To view this file as a UML diagram in Google Chrome you need to have the PlantUML Viewer extension installed.
-You can then open this file as a diagram on GitHub by using the raw button at the top of the file viewer. 
-You can get the Chrome extension here: 
-https://chrome.google.com/webstore/detail/plantuml-viewer/legbfeljfbjgfifnkmpoajgpgejojooj
-
-To view this file as a UML diagram in NetBeans you need to have the PlantUML pluging installed. 
-You can get the NetBeans plugin it here: http://plugins.netbeans.org/plugin/49069/plantuml
-
------------------------------------------------------------------------------------------
-'/
 @startuml
+'-----------------------------------READ THIS-----------------------------------
+'
+'To view this file as a UML diagram in Google Chrome you need to have the 
+'PlantUML Viewer extension installed. You can then open this file as a diagram 
+'on GitHub by using the Raw button at the top of the file viewer. 
+'You can get the Chrome extension here: 
+'https://chrome.google.com/webstore/detail/plantuml-viewer/legbfeljfbjgfifnkmpoajgpgejojooj
+'
+'To view this file as a UML diagram in NetBeans you need to have the PlantUML 
+'plugin installed. You can get the NetBeans plugin it here: 
+'http://plugins.netbeans.org/plugin/49069/plantuml
+'
+'If you get a error message please google the error. You might need to install 
+'additional software to view this UML.
+'
+'-------------------------------------------------------------------------------
 namespace com.github.ryancwilliams.Starways
     namespace engine {
         namespace bodies {    
