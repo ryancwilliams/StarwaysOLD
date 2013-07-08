@@ -1,0 +1,95 @@
+@startuml
+'Define the java files'
+namespace com.github.ryancwilliams.Starways
+    namespace engine {
+        namespace bodies {       
+        }
+        namespace math.ValuesOfQuantites {
+            interface Quantity {
+                +getName()
+                +getSymbol()
+                +getConversionFactor()
+            }
+            Quantity <|.. QuantityOfLength
+            Quantity <|.. QuantityOfMass
+            Quantity <.. ValueOfQuantity
+            enum QuantityOfLength {
+                METRE
+                KILOMETRE
+                ASTRONOMICAL_UNIT
+                LIGHT_YEAR
+                SOLAR_RADIUS
+                EARTH_RADIUS
+                +{static} BASE_UNIT : QuantityOfLength
+                -NAME : String
+                -SYMBOL : String
+                -CONVERSION_FACTOR : double
+                -QuantityOfLength(String Name, String Symbol, double ConversionFactor)
+                +getName() : String
+                +getSymbol() : String
+                +getConversionFactor() : double
+                +{static} caculateConversionFactor(QuantityOfLength source, QuantityOfLength destination) : double
+                +toString() : String
+            }
+            QuantityOfLength <.. ValueOfLength
+            enum QuantityOfMass {
+                KILOGRAM
+                GRAM
+                METRIC_TON
+                SOLAR_MASS
+                EARTH_MASS
+                +{static} BASE_UNIT : QuantityOfMass
+                -NAME : String
+                -SYMBOL : String
+                -CONVERSION_FACTOR : double
+                -QuantityOfLength(String Name, String Symbol, double ConversionFactor)
+                +getName() : String
+                +getSymbol() : String
+                +getConversionFactor() : double
+                +{static} caculateConversionFactor(QuantityOfLength source, QuantityOfLength destination) : double
+                +toString() : String
+            }
+            QuantityOfMass <.. ValueOfMass
+            abstract class ValueOfQuantity {
+                #value : double
+                +getValue() : double
+                +setValue(double value)
+                +getQuantity() : Quantity
+                +asString(int precision) : String
+                +asString()
+            }
+            ValueOfQuantity <|-- ValueOfLength
+            ValueOfQuantity <|-- ValueOfMass
+            ValueOfQuantity <..> ValueOfQuantityFormatter
+            class ValueOfMass {
+                -quantity : QuantityOfMass
+                +ValueOfMass(double value, QuantityOfMass quantity)
+                +getQuantity() : QuantityOfMass
+                +setQuantity(QuantityOfMass quantity)
+                +getConvertedValue(QuantityOfMass quantity) : double
+                +getConvertedValueOfLength(QuantityOfMass quantity) : ValueOfMass
+                +convertTo(QuantityOfMass quantity)
+                +asString() : String
+                +toString() : String
+            }
+            ValueOfMass --* bodies.AstronomicalObject
+            class ValueOfLength {
+                -quantity : QuantityOfLength
+                +ValueOfMass(double value, QuantityOfLength quantity)
+                +getQuantity() : QuantityOfLength
+                +setQuantity(QuantityOfLength quantity)
+                +getConvertedValue(QuantityOfLength quantity) : double
+                +getConvertedValueOfLength(QuantityOfLength quantity) : ValueOfLength
+                +convertTo(QuantityOfLength quantity)
+                +asString() : String
+                +toString() : String
+            }
+            ValueOfLength --* bodies.AstronomicalObject
+            class ValueOfQuantityFormatter {
+                -getFormat(int decimalPlaces) : DecimalFormat
+                ~formatValueOfQuantity(ValueOfQuantity value, int decimalPlaces) : String
+            }
+        }
+    }
+}
+@enduml
