@@ -1,8 +1,65 @@
 @startuml
-'Define the java files'
 namespace com.github.ryancwilliams.Starways
     namespace engine {
-        namespace bodies {       
+        namespace bodies {    
+            class AstronomicalObject {
+                -radius : ValueOfLength
+                -mass : ValueOfMass
+                +getRadius() : ValueOfLength
+                +getMass() : ValueOfMass
+            }
+        }
+        namespace positions {
+            abstract class Position {
+                {abstract}+getX() : double
+                {abstract}+getY() : double
+            }
+            Position <|-- FinitePosition
+            Position <|-- RelativePosition
+            class FinitePosition {
+                -x : double
+                -y : double
+                +FinitePosition(double x, double y)
+                +getX() : double
+                +getY() : double
+                +setX(double x)
+                +setY(double y)
+            }
+            class RelativePosition {
+                #referencePosition : Position
+                -dx : double
+                -dy : double
+                +RelativePosition(Position referencePosition, double dy, double dx)
+                +RelativePosition(Position referencePosition)
+                +getX() : double
+                +getY() : double
+                +getReferencePosition() : Position
+                +setReferencePosition(Position referencePosition)
+                +changeReferencePosition(Position referencePosition)
+                +getDX() : double
+                +getDY() : double
+                +setDX(double dx)
+                +setDy(double dx)
+                +setRelativePosition(double dx, double dy)
+            }
+            RelativePosition <|-- OrbitPosition
+            class OrbitPosition {
+                -referencePositionMass : ValueOfMass
+                -orbitingMass : ValueOfMass
+                -distance : ValueOfLength
+                -angle : double
+                +OrbitPosition(Position referencePosition, ValueOfMass referencePositionMass, ValueOfMass orbitingMass, ValueOfLength Distance, double angle)
+                +OrbitPosition(Position referencePosition, ValueOfMass referencePositionMass, ValueOfMass orbitingMass, ValueOfLength Distance)
+                +OrbitPosition(AstronomicalObject primaryBody, ValueOfMass orbitingMass, ValueOfLength Distance, double angle)
+                +OrbitPosition(AstronomicalObject primaryBody, ValueOfMass orbitingMass, ValueOfLength Distance)
+                +getReferencePositionMass() : ValueOfMass
+                +getOrbitingMass() : ValueOfMass
+                +getDistance() : ValueOfLength
+                +setDistance(ValueOfLength distance)
+                +getAngle() : double
+                +setAngle(double angle)
+                +incrementTime(ValueOfTime time)
+            }
         }
         namespace math.ValuesOfQuantites {
             interface Quantity {
@@ -12,7 +69,7 @@ namespace com.github.ryancwilliams.Starways
             }
             Quantity <|.. QuantityOfLength
             Quantity <|.. QuantityOfMass
-            Quantity <.. ValueOfQuantity
+            Quantity <.up. ValueOfQuantity
             enum QuantityOfLength {
                 METRE
                 KILOMETRE
@@ -31,7 +88,7 @@ namespace com.github.ryancwilliams.Starways
                 +{static} caculateConversionFactor(QuantityOfLength source, QuantityOfLength destination) : double
                 +toString() : String
             }
-            QuantityOfLength <.. ValueOfLength
+            QuantityOfLength --o ValueOfLength
             enum QuantityOfMass {
                 KILOGRAM
                 GRAM
@@ -49,7 +106,7 @@ namespace com.github.ryancwilliams.Starways
                 +{static} caculateConversionFactor(QuantityOfLength source, QuantityOfLength destination) : double
                 +toString() : String
             }
-            QuantityOfMass <.. ValueOfMass
+            QuantityOfMass --o ValueOfMass
             abstract class ValueOfQuantity {
                 #value : double
                 +getValue() : double
@@ -75,7 +132,7 @@ namespace com.github.ryancwilliams.Starways
             ValueOfMass --* bodies.AstronomicalObject
             class ValueOfLength {
                 -quantity : QuantityOfLength
-                +ValueOfMass(double value, QuantityOfLength quantity)
+                +ValueOfLength(double value, QuantityOfLength quantity)
                 +getQuantity() : QuantityOfLength
                 +setQuantity(QuantityOfLength quantity)
                 +getConvertedValue(QuantityOfLength quantity) : double
