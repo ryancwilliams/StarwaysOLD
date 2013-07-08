@@ -44,7 +44,7 @@ public class ValueOfMass extends ValueOfQuantity {
      * @return the quantity the value is specified in.
      */
     @Override
-    public Quantity getQuantity() {
+    public QuantityOfMass getQuantity() {
         return this.quantity;
     }
 
