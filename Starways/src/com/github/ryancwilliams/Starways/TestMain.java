@@ -1,7 +1,7 @@
 package com.github.ryancwilliams.Starways;
 
 import com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities.QuantityOfLength;
-import com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities.ValueOfLength;
+import com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities.ValueOfQuantity;
 
 /**
  * This is a main class for testing the application
@@ -16,19 +16,19 @@ public class TestMain {
         com.github.ryancwilliams.Starways.ui.LaunchWindow.createWindow();
         
         //Test Values of Quanties
-        ValueOfLength test = new ValueOfLength(1, QuantityOfLength.LIGHT_YEAR);
+        ValueOfQuantity<QuantityOfLength> test = new ValueOfQuantity(1, QuantityOfLength.LIGHT_YEAR);
         System.out.println(test);
         System.out.println(test.asString());
-        System.out.println(test.getConvertedValueOfLength(QuantityOfLength.METRE).asString());
-        System.out.println(test.getConvertedValueOfLength(QuantityOfLength.KILOMETRE).asString());
-        System.out.println(test.getConvertedValueOfLength(QuantityOfLength.ASTRONOMICAL_UNIT).asString());
-        System.out.println(test.getConvertedValueOfLength(QuantityOfLength.LIGHT_YEAR).asString());
-        test = new ValueOfLength(1, QuantityOfLength.METRE);
+        System.out.println(test.getConvertedValueOfQuantity(QuantityOfLength.METRE).asString());
+        System.out.println(test.getConvertedValueOfQuantity(QuantityOfLength.KILOMETRE).asString());
+        System.out.println(test.getConvertedValueOfQuantity(QuantityOfLength.ASTRONOMICAL_UNIT).asString());
+        System.out.println(test.getConvertedValueOfQuantity(QuantityOfLength.LIGHT_YEAR).asString());
+        test = new ValueOfQuantity(1, QuantityOfLength.METRE);
         System.out.println(test);
         System.out.println(test.asString());
-        System.out.println(test.getConvertedValueOfLength(QuantityOfLength.METRE).asString());
-        System.out.println(test.getConvertedValueOfLength(QuantityOfLength.KILOMETRE).asString());
-        System.out.println(test.getConvertedValueOfLength(QuantityOfLength.ASTRONOMICAL_UNIT).asString());
-        System.out.println(test.getConvertedValueOfLength(QuantityOfLength.LIGHT_YEAR).asString());
+        System.out.println(test.getConvertedValueOfQuantity(QuantityOfLength.METRE).asString());
+        System.out.println(test.getConvertedValueOfQuantity(QuantityOfLength.KILOMETRE).asString());
+        System.out.println(test.getConvertedValueOfQuantity(QuantityOfLength.ASTRONOMICAL_UNIT).asString());
+        System.out.println(test.getConvertedValueOfQuantity(QuantityOfLength.LIGHT_YEAR).asString());
     }
 }

@@ -15,8 +15,9 @@
  */
 package com.github.ryancwilliams.Starways.engine.bodies;
 
-import com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities.ValueOfLength;
-import com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities.ValueOfMass;
+import com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities.QuantityOfLength;
+import com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities.QuantityOfMass;
+import com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities.ValueOfQuantity;
 
 /**
  * Astronomical objects or celestial objects are naturally occurring physical 
@@ -29,12 +30,12 @@ public class AstronomicalObject {
     /**
      * The radius of the object
      */
-    private ValueOfLength radius;
+    private ValueOfQuantity<QuantityOfLength> radius;
     
     /**
      * The mass of the object
      */
-    private ValueOfMass mass;
+    private ValueOfQuantity<QuantityOfMass> mass;
     
     //TODO Add Length
     
@@ -44,7 +45,7 @@ public class AstronomicalObject {
      * Gets the radius of this body.
      * @return the radius of this body
      */
-    public ValueOfLength getRadius() {
+    public ValueOfQuantity<QuantityOfLength> getRadius() {
         return radius;
     }
 
@@ -52,7 +53,7 @@ public class AstronomicalObject {
      * Gets the mass of this body.
      * @return the mass of this body
      */
-    public ValueOfMass getMass() {
+    public ValueOfQuantity<QuantityOfMass> getMass() {
         return mass;
     }
 }
