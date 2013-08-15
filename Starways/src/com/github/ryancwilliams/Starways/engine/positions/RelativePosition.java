@@ -22,8 +22,8 @@ package com.github.ryancwilliams.Starways.engine.positions;
 public class RelativePosition extends Position {
 
     /**
-     * The reference position of this position.
-     * The zero point of the delta positions (DY and DX)
+     * The reference position of this position. The zero point of the delta
+     * positions (DY and DX)
      */
     private Position referencePosition;
     
