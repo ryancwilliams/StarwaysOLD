@@ -107,6 +107,14 @@ public class ValueOfQuantity<QUANTITY_TYPE extends Quantity> implements
     }
 
     /**
+     * Gets the value of this ValueOfQuantity in its base units.
+     * @return the value of this ValueOfQuantity in its base units.
+     */
+    public double getBaseValue() {
+        return this.value * this.quantity.getConversionFactor();
+    }
+    
+    /**
      * Gets this ValueOfQuantity as a formated string.
      *
      * @param precision the number decimals to create the value to.
@@ -174,8 +182,8 @@ public class ValueOfQuantity<QUANTITY_TYPE extends Quantity> implements
     @Override
     public int compareTo(ValueOfQuantity<QUANTITY_TYPE> that) {
         //Convert values to base unit
-        double baseValueThis = this.value * this.quantity.getConversionFactor();
-        double baseValueThat = that.value * that.quantity.getConversionFactor();
+        double baseValueThis = this.getBaseValue();
+        double baseValueThat = that.getBaseValue();
         
         //Caculate Delta
         double delta = baseValueThis - baseValueThat;
