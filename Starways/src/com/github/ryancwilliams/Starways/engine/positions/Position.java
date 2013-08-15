@@ -22,14 +22,14 @@ package com.github.ryancwilliams.Starways.engine.positions;
 public abstract class Position {
     
     /**
-     * Gets the X value of this position. 
-     * @return the X value of this position
+     * Gets the X value of this position on the current plane. 
+     * @return the X value of this position on the current plane.
      */
     public abstract double getX();
     
     /**
-     * Gets the Y value of this position.
-     * @return Y value of this position
+     * Gets the Y value of this position on the current plane.
+     * @return Y value of this position on the current plane.
      */
     public abstract double getY();
     
