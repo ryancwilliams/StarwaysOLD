@@ -20,8 +20,9 @@ import com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities.Quantity
 import com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities.ValueOfQuantity;
 
 /**
- * This class represents a position on a plane that revolves around another position on
- * the same plane.
+ * This class represents a position on a plane that revolves around another
+ * position on the same plane.
+ *
  * @author ryancwilliams
  */
 public class PolarPosition extends Position {
@@ -42,14 +43,40 @@ public class PolarPosition extends Position {
      */
     private ValueOfQuantity<QuantityOfAngle> angle;
 
+    /**
+     * Calculates the radius of the circle that this position is located on.
+     *
+     * @return the radius of the circle that this position is located on.
+     */
+    private double caculateRadiusOnPlaneScale() {
+        //Get the scale of the plane
+        ValueOfQuantity<QuantityOfLength> planeScale = this.getPlane().getScale();
+        //Calculate and return the distance at which this position revolves 
+        //around the reference position.
+        return this.getDistance().getConvertedValue(planeScale.getQuantity())
+                / planeScale.getValue();
+    }
+
     @Override
     public double getX() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Caculate the DX
+        double dx = this.caculateRadiusOnPlaneScale()
+                * Math.cos(getAngle().getConvertedValue(QuantityOfAngle.RADIAN));
+        //Caculate the X
+        double x = getCenterPosition().getX() + dx;
+        //return the X
+        return x;
     }
 
     @Override
     public double getY() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Caculate the DY
+        double dy = this.caculateRadiusOnPlaneScale()
+                * Math.sin(getAngle().getConvertedValue(QuantityOfAngle.RADIAN));
+        //Caculate the Y
+        double y = getCenterPosition().getY() + dy;
+        //return the Y
+        return y;
     }
 
     @Override
@@ -73,8 +100,8 @@ public class PolarPosition extends Position {
      * Sets the position that represents the center of the circle that the
      * Position is located on.
      *
-     * @param centerPosition The new position that represents the center of
-     * the circle that the Position is located on.
+     * @param centerPosition The new position that represents the center of the
+     * circle that the Position is located on.
      */
     public void setCenterPosition(Position centerPosition) {
         this.centerPosition = centerPosition;
