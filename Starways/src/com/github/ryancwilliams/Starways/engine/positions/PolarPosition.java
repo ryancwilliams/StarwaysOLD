@@ -15,6 +15,10 @@
  */
 package com.github.ryancwilliams.Starways.engine.positions;
 
+import com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities.QuantityOfAngle;
+import com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities.QuantityOfLength;
+import com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities.ValueOfQuantity;
+
 /**
  *
  * @author ryancwilliams
@@ -22,12 +26,20 @@ package com.github.ryancwilliams.Starways.engine.positions;
 public class PolarPosition extends Position {
 
     /**
-     * The reference position of this position. The center of the circle that
-     * the Position is located on.
+     * The reference position of this position. The position that represents the
+     * center of the circle that the Position is located on.
      */
     private Position referencePosition;
-    
-    
+    /**
+     * The distance at which this position revolves around the reference
+     * position.
+     */
+    private ValueOfQuantity<QuantityOfLength> distance;
+    /**
+     * The angle at which this position is in relation to the reference
+     * position. 0 is positive x on the plane.
+     */
+    private ValueOfQuantity<QuantityOfAngle> angle;
 
     @Override
     public double getX() {
@@ -37,5 +49,71 @@ public class PolarPosition extends Position {
     @Override
     public double getY() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * Gets the position that represents the center of the circle that the
+     * Position is located on.
+     *
+     * @return The position that represents the center of the circle that the
+     * Position is located on.
+     */
+    public Position getReferencePosition() {
+        return referencePosition;
+    }
+
+    /**
+     * Sets the position that represents the center of the circle that the
+     * Position is located on.
+     *
+     * @param referencePosition The new position that represents the center of
+     * the circle that the Position is located on.
+     */
+    public void setReferencePosition(Position referencePosition) {
+        this.referencePosition = referencePosition;
+    }
+
+    /**
+     * Gets the distance at which this position revolves around the reference
+     * position.
+     *
+     * @return The distance at which this position revolves around the reference
+     * position.
+     */
+    public ValueOfQuantity<QuantityOfLength> getDistance() {
+        return distance;
+    }
+
+    /**
+     * Sets the distance at which this position revolves around the reference
+     * position.
+     *
+     * @param distance The new distance at which this position revolves around
+     * the reference position.
+     */
+    public void setDistance(ValueOfQuantity<QuantityOfLength> distance) {
+        this.distance = distance;
+    }
+
+    /**
+     * Gets the angle at which this position is in relation to the reference
+     * position.
+     *
+     * @return The angle at which this position is in relation to the reference
+     * position.
+     */
+    public ValueOfQuantity<QuantityOfAngle> getAngle() {
+        return angle;
+    }
+
+    /**
+     * Sets the angle at which this position is in relation to the reference
+     * position.
+     *
+     * @param angle The new angle at which this position is in relation to the
+     * reference position.
+     */
+    public void setAngle(ValueOfQuantity<QuantityOfAngle> angle) {
+        this.angle = angle;
     }
 }
