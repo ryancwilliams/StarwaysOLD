@@ -72,4 +72,20 @@ public class Plane {
     public Plane() {
         this((Position) null);
     }
+
+    /**
+     * Gets the center of this plane on a parent plane.
+     * @return The center of this plane on a parent plane. <code>null</code> if this plane is the highest in the hierarchy
+     */
+    public Position getCenterOnSuperPlane() {
+        return centerOnSuperPlane;
+    }
+
+    /**
+     * Gets the scale of this plane.
+     * @return The scale of this plane.
+     */
+    public ValueOfQuantity<QuantityOfLength> getScale() {
+        return scale;
+    }
 }
