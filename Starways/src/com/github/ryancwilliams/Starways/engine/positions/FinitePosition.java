@@ -29,15 +29,20 @@ public class FinitePosition extends Position {
      * The Y value of this position.
      */
     private double y;
+    /**
+     * The plane that this Position is located on.
+     */
+    private Plane plane;
 
     /**
      * Creates a new FinitePosition object.
      * @param x the X value of this position.
      * @param y the Y value of this position.
      */
-    public FinitePosition(double x, double y) {
+    public FinitePosition(double x, double y, Plane plane) {
         this.x = x;
         this.y = y;
+        this.plane = plane;
     }
     
     @Override
@@ -48,6 +53,11 @@ public class FinitePosition extends Position {
     @Override
     public double getY() {
         return this.y;
+    }
+
+    @Override
+    public Plane getPlane() {
+        return this.plane;
     }
 
     /**

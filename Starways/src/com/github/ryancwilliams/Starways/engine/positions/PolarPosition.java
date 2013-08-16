@@ -20,16 +20,17 @@ import com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities.Quantity
 import com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities.ValueOfQuantity;
 
 /**
- *
+ * This class represents a position on a plane that revolves around another position on
+ * the same plane.
  * @author ryancwilliams
  */
 public class PolarPosition extends Position {
 
     /**
-     * The reference position of this position. The position that represents the
+     * The center position of this position. The position that represents the
      * center of the circle that the Position is located on.
      */
-    private Position referencePosition;
+    private Position centerPosition;
     /**
      * The distance at which this position revolves around the reference
      * position.
@@ -51,6 +52,12 @@ public class PolarPosition extends Position {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public Plane getPlane() {
+        //Return the plane that the reference position is located on
+        return this.centerPosition.getPlane();
+    }
+
     /**
      * Gets the position that represents the center of the circle that the
      * Position is located on.
@@ -58,19 +65,19 @@ public class PolarPosition extends Position {
      * @return The position that represents the center of the circle that the
      * Position is located on.
      */
-    public Position getReferencePosition() {
-        return referencePosition;
+    public Position getCenterPosition() {
+        return centerPosition;
     }
 
     /**
      * Sets the position that represents the center of the circle that the
      * Position is located on.
      *
-     * @param referencePosition The new position that represents the center of
+     * @param centerPosition The new position that represents the center of
      * the circle that the Position is located on.
      */
-    public void setReferencePosition(Position referencePosition) {
-        this.referencePosition = referencePosition;
+    public void setCenterPosition(Position centerPosition) {
+        this.centerPosition = centerPosition;
     }
 
     /**

@@ -33,4 +33,9 @@ public abstract class Position {
      */
     public abstract double getY();
     
+    /**
+     * Gets the plane that this Position is located on.
+     * @return The plane that this Position is located on.
+     */
+    public abstract Plane getPlane();
 }
