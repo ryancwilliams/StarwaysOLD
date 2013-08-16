@@ -22,7 +22,7 @@ import java.text.DecimalFormat;
  *
  * @author ryancwilliams
  */
-public class ValueOfQuantity<QUANTITY_TYPE extends Quantity> implements 
+public class ValueOfQuantity<QUANTITY_TYPE extends Quantity> implements
         Comparable<ValueOfQuantity<QUANTITY_TYPE>> {
 
     /**
@@ -34,9 +34,23 @@ public class ValueOfQuantity<QUANTITY_TYPE extends Quantity> implements
      */
     private QUANTITY_TYPE quantity;
 
+    /**
+     * Creates a ValueOfQuantity object.
+     *
+     * @param value the value in the specified quantity.
+     * @param quantity the quantity the value is specified in.
+     */
     public ValueOfQuantity(double value, QUANTITY_TYPE quantity) {
         this.value = value;
         this.quantity = quantity;
+    }
+
+    /**
+     * Creates a ValueOfQuantity object with a value of 0 and a Quantity of
+     * <code>null</code>
+     */
+    protected ValueOfQuantity() {
+        this(0, null);
     }
 
     /**
@@ -108,12 +122,13 @@ public class ValueOfQuantity<QUANTITY_TYPE extends Quantity> implements
 
     /**
      * Gets the value of this ValueOfQuantity in its base units.
+     *
      * @return the value of this ValueOfQuantity in its base units.
      */
     public double getBaseValue() {
         return this.value * this.quantity.getConversionFactor();
     }
-    
+
     /**
      * Gets this ValueOfQuantity as a formated string.
      *
@@ -135,59 +150,62 @@ public class ValueOfQuantity<QUANTITY_TYPE extends Quantity> implements
     }
 
     /**
-     * Gets a DecimalFormat that can be used to create decimal strings with the 
+     * Gets a DecimalFormat that can be used to create decimal strings with the
      * specified number of decimal places.
-     * @param decimalPlaces the number of decimal places to generate a DecimalFormat for. 
+     *
+     * @param decimalPlaces the number of decimal places to generate a
+     * DecimalFormat for.
      * @return The DecimalFormat.
      */
     private static DecimalFormat getFormat(int decimalPlaces) {
         //Create a digit and a decimal point with leading digits and thousands separator 
         String pattern = "###,##0.";
-        
+
         //For <decimalPlaces> of times
-        for(int i = 0;i < decimalPlaces;i++) {
+        for (int i = 0; i < decimalPlaces; i++) {
             //add a digit
             pattern += "0";
         }
-        
+
         //Create the Decimal format and return it
         return new DecimalFormat(pattern);
     }
-    
+
     /**
-     * Creates a formated string from the provided ValueOfQuantity. 
-     * This method is called by asString methods in the implementation 
-     * classes of ValueOfQuantity interface. That asString method is 
-     * preferred over this method.
+     * Creates a formated string from the provided ValueOfQuantity. This method
+     * is called by asString methods in the implementation classes of
+     * ValueOfQuantity interface. That asString method is preferred over this
+     * method.
+     *
      * @return a formated string based on the provided ValueOfQuantity.
      */
     private static String formatValueOfQuantity(ValueOfQuantity value, int decimalPlaces) {
         //Create a empty soutput tring 
         String formatedString = "";
-        
+
         //Add the formated number to the string
         formatedString += ValueOfQuantity.getFormat(decimalPlaces)
                 .format(value.getValue());
-        
+
         //Add a space to the string
         formatedString += " ";
-        
+
         //Add the quantity symbol to the string
         formatedString += value.getQuantity().getSymbol();
-        
+
         //return the formated string
         return formatedString;
     }
-    
+
     @Override
     public int compareTo(ValueOfQuantity<QUANTITY_TYPE> that) {
         //Convert values to base unit
         double baseValueThis = this.getBaseValue();
         double baseValueThat = that.getBaseValue();
-        
+
         //Caculate Delta
         double delta = baseValueThis - baseValueThat;
-        
+
         //Create a output interger
         int out;
         if (delta > Integer.MAX_VALUE) {
@@ -197,7 +215,7 @@ public class ValueOfQuantity<QUANTITY_TYPE extends Quantity> implements
         } else {
             out = (int) delta;
         }
-        
+
         //Return output
         return out;
     }
