@@ -15,23 +15,39 @@
  */
 package com.github.ryancwilliams.Starways.engine.math.ValuesOfQuantities;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 /**
  * An class providing common methods for working with a ValueOfQuantity object.
  *
  * @author ryancwilliams
  */
+@Embeddable
 public class ValueOfQuantity<QUANTITY_TYPE extends Enum & Quantity> implements
-        Comparable<ValueOfQuantity<QUANTITY_TYPE>> {
+        Comparable<ValueOfQuantity<QUANTITY_TYPE>>, Serializable {
 
+    /**
+     * Determines if a de-serialized file is compatible with this class.
+     *
+     * Maintainers must change this value if and only if the new version of this
+     * class is not compatible with old versions. See Sun docs for <a
+     * href=http://java.sun.com/products/jdk/1.1/docs/guide/serialization/spec/
+     * version.doc.html>
+     * details</a>.
+     */
+    private static final long serialVersionUID = -4430113729107419959L;
     /**
      * the value in the specified quantity.
      */
-    protected double value;
+    protected double val;
     /**
      * the quantity the value is specified in.
      */
+    @Enumerated(EnumType.STRING)
     private QUANTITY_TYPE quantity;
 
     /**
@@ -41,7 +57,7 @@ public class ValueOfQuantity<QUANTITY_TYPE extends Enum & Quantity> implements
      * @param quantity the quantity the value is specified in.
      */
     public ValueOfQuantity(double value, QUANTITY_TYPE quantity) {
-        this.value = value;
+        this.val = value;
         this.quantity = quantity;
     }
 
@@ -59,7 +75,7 @@ public class ValueOfQuantity<QUANTITY_TYPE extends Enum & Quantity> implements
      * @return the value in the specified quantity.
      */
     public double getValue() {
-        return value;
+        return val;
     }
 
     /**
@@ -68,7 +84,7 @@ public class ValueOfQuantity<QUANTITY_TYPE extends Enum & Quantity> implements
      * @param value the value to set specified quantity into.
      */
     public void setValue(double value) {
-        this.value = value;
+        this.val = value;
     }
 
     /**
@@ -96,7 +112,7 @@ public class ValueOfQuantity<QUANTITY_TYPE extends Enum & Quantity> implements
      * @return the value in the specified quantity.
      */
     public double getConvertedValue(QUANTITY_TYPE quantity) {
-        return this.value
+        return this.val
                 * (this.quantity.getConversionFactor() / quantity.getConversionFactor());
     }
 
@@ -116,7 +132,7 @@ public class ValueOfQuantity<QUANTITY_TYPE extends Enum & Quantity> implements
      * @param quantity the quantity this value should be in.
      */
     public void convertTo(QUANTITY_TYPE quantity) {
-        this.value = this.getConvertedValue(quantity);
+        this.val = this.getConvertedValue(quantity);
         this.quantity = quantity;
     }
 
@@ -126,7 +142,7 @@ public class ValueOfQuantity<QUANTITY_TYPE extends Enum & Quantity> implements
      * @return the value of this ValueOfQuantity in its base units.
      */
     public double getBaseValue() {
-        return this.value * this.quantity.getConversionFactor();
+        return this.val * this.quantity.getConversionFactor();
     }
 
     /**
@@ -221,6 +237,6 @@ public class ValueOfQuantity<QUANTITY_TYPE extends Enum & Quantity> implements
 
     @Override
     public String toString() {
-        return "ValueOfQuantity{" + "value=" + value + ", quantity=" + quantity + '}';
+        return "ValueOfQuantity{" + "value=" + val + ", quantity=" + quantity + '}';
     }
 }
