@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.ryancwilliams.Starways.ui;
+package com.github.ryancwilliams.Starways.ui.map;
 
 /**
  *
  * @author ryancwilliams
  */
-public class MainGameWindow extends javax.swing.JFrame {
+public class SystemMapWindow extends javax.swing.JFrame {
 
     /**
-     * Creates new form MainGameWindow
+     * Creates new form SystemMapWindow
      */
-    public MainGameWindow() {
+    public SystemMapWindow() {
         initComponents();
     }
 
@@ -37,30 +37,7 @@ public class MainGameWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Menu = new javax.swing.JMenuBar();
-        FileMenu = new javax.swing.JMenu();
-        EmpireMenu = new javax.swing.JMenu();
-        SystemMapMenuItem = new javax.swing.JMenuItem();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        FileMenu.setText("File");
-        Menu.add(FileMenu);
-
-        EmpireMenu.setText("Empire");
-
-        SystemMapMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
-        SystemMapMenuItem.setText("System Map");
-        SystemMapMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SystemMapMenuItemActionPerformed(evt);
-            }
-        });
-        EmpireMenu.add(SystemMapMenuItem);
-
-        Menu.add(EmpireMenu);
-
-        setJMenuBar(Menu);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,20 +47,14 @@ public class MainGameWindow extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 278, Short.MAX_VALUE)
+            .add(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SystemMapMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SystemMapMenuItemActionPerformed
-        // TODO add your handling code here:
-        //Create System map Window
-        com.github.ryancwilliams.Starways.ui.map.SystemMapWindow.createWindow();
-    }//GEN-LAST:event_SystemMapMenuItemActionPerformed
-
     /**
-     * Creates the Main game window
+     * Creates the System Map window.
      */
     public static void createWindow() {
         /* Set the Nimbus look and feel */
@@ -99,27 +70,23 @@ public class MainGameWindow extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainGameWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SystemMapWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainGameWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SystemMapWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainGameWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SystemMapWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainGameWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SystemMapWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainGameWindow().setVisible(true);
+                new SystemMapWindow().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu EmpireMenu;
-    private javax.swing.JMenu FileMenu;
-    private javax.swing.JMenuBar Menu;
-    private javax.swing.JMenuItem SystemMapMenuItem;
     // End of variables declaration//GEN-END:variables
 }
