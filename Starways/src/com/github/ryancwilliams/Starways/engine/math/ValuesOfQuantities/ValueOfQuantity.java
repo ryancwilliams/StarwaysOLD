@@ -22,7 +22,7 @@ import java.text.DecimalFormat;
  *
  * @author ryancwilliams
  */
-public class ValueOfQuantity<QUANTITY_TYPE extends Quantity> implements
+public class ValueOfQuantity<QUANTITY_TYPE extends Enum & Quantity> implements
         Comparable<ValueOfQuantity<QUANTITY_TYPE>> {
 
     /**
@@ -137,7 +137,7 @@ public class ValueOfQuantity<QUANTITY_TYPE extends Quantity> implements
      */
     public String asString(int precision) {
         //Call the formator to format this value.
-        return ValueOfQuantity.formatValueOfQuantity(this, precision);
+        return this.formatValueOfQuantity(precision);
     }
 
     /**
@@ -172,26 +172,25 @@ public class ValueOfQuantity<QUANTITY_TYPE extends Quantity> implements
     }
 
     /**
-     * Creates a formated string from the provided ValueOfQuantity. This method
-     * is called by asString methods in the implementation classes of
-     * ValueOfQuantity interface. That asString method is preferred over this
-     * method.
+     * Creates a formated string for this ValueOfQuantity. This method is called
+     * by asString methods in ValueOfQuantity. That asString method is preferred
+     * over this method.
      *
      * @return a formated string based on the provided ValueOfQuantity.
      */
-    private static String formatValueOfQuantity(ValueOfQuantity value, int decimalPlaces) {
+    private String formatValueOfQuantity(int decimalPlaces) {
         //Create a empty soutput tring 
         String formatedString = "";
 
         //Add the formated number to the string
         formatedString += ValueOfQuantity.getFormat(decimalPlaces)
-                .format(value.getValue());
+                .format(this.getValue());
 
         //Add a space to the string
         formatedString += " ";
 
         //Add the quantity symbol to the string
-        formatedString += value.getQuantity().getSymbol();
+        formatedString += this.getQuantity().getSymbol();
 
         //return the formated string
         return formatedString;
